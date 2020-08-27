@@ -1,9 +1,10 @@
 // import React from 'react';
-import './App.css';
+import '../components/Stickies.css';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import MoviesPage from './MoviesPage';
+import Stickys from '../components/Stickies';
+import HomePage from './HomePage';
 
 
 class App extends Component {
@@ -21,12 +22,12 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          <Route exact path="/" render={() => <div>Home</div>} />
-          <Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies}/>} />
+          <Route exact path="/" render={() => <HomePage></HomePage>} />
+          <Route path='/stickynotes' render={() => <Stickys></Stickys>} />
         </div>
       </Router>
     );
   }
 }
-
+// routerProps
 export default App;

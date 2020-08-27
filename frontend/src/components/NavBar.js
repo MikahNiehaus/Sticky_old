@@ -13,9 +13,9 @@ const NavBar = () => {
       </NavLink>
       <NavLink 
         style={{ marginRight: '10px' }} 
-        to="/movies"
+        to="/stickynotes"
       >
-        Movies
+        Sticky Notes
       </NavLink>
     </div>
   );
