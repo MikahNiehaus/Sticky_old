@@ -1,11 +1,11 @@
 // import React from 'react';
-import '../components/Stickies.css';
+import './App.css';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import NavBar from '../components/NavBar';
-import Stickys from '../components/Stickies';
+import Stickys from './Stickies';
 import HomePage from './HomePage';
-
+import ImportantStickies from './ImportantStickies';
 
 class App extends Component {
 
@@ -24,6 +24,7 @@ class App extends Component {
           <NavBar />
           <Route exact path="/" render={() => <HomePage></HomePage>} />
           <Route path='/stickynotes' render={() => <Stickys></Stickys>} />
+          <Route path='/importantnotes' render={() => <ImportantStickies></ImportantStickies>} />
         </div>
       </Router>
     );

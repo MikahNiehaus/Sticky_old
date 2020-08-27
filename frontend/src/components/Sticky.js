@@ -5,7 +5,7 @@ export default class Sticky extends Component {
         super();
         this.state = {
             input: '',
-            color: '#'+Math.floor(Math.random()*16777215).toString(16),
+            color: '#ffff66',
             time: this.getTime()
           };
     }
@@ -24,13 +24,9 @@ export default class Sticky extends Component {
       }
     
     render() {
-      //  const { time, color, className } = this.state
   return (
        <section className="Sticky" style={{background: this.state.color}} >
-        {/* <dif style={{background: 'white'}} > */}
-          <h1>{this.state.time} {this.props.body}</h1>
-          {/* </dif> */}
-          <textarea style={{width: 230, height: 200}} type="text" value={this.state.value} onChange={this.handleChange} />
+          <h4>{this.props.tittle}</h4>
           <aside className="mountText">Posted</aside>
           <small onClick={ this.handleClose }>X</small>
        </section>

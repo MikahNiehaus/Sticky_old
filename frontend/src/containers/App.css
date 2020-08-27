@@ -1,38 +1,138 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  } */
+  
+  .Stickies {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    padding: 5px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  h4{
+    
+   
+    text-align: center;
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  h1{
+    text-align: center;
   }
-}
+  
+  h2{
+    text-align: center;
+    
+  }
+  h3{
+    text-align: center;
+  }
+
+  button {
+    font-size: 200%;
+  }
+  
+  .SpacePeople {
+    height: 100px;
+  }
+  
+  .StickyGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .Sticky {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 5px;
+    padding: 20px;
+    min-width: 200px;
+    width: 240px;
+    height: 150px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    font-size: 15px;
+    box-shadow: 4px 6px rgba(200,200,200,0.8);
+    text-transform: capitalize;
+    
+    float: left;
+   
+  }
+
+
+  figure {
+    height: 40%;
+  }
+  img {
+    height: 100%;
+  
+  }
+  .cardContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+  }
+  
+  .q {
+    font-size: 120%;
+  }
+  
+  .Sticky aside {
+    position: absolute;
+    left: 0;
+    bottom: 0%;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+  }
+  
+  .Sticky small {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    color: grey;
+    cursor: pointer;
+  }
+  
+  .mountText {
+    font-size: 200%;
+    animation-name: animateMount;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  }
+  
+  .hidden {
+    opacity: 0;
+  }
+  
+  @keyframes animateMount {
+      from {opacity: 1;}
+      to {opacity: 0;}
+  }
+  
+  form {
+    font-size: 150%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content:flex-start;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+  }
+  
+  textarea {
+    font-size: 140%;
+    width: 50%;
+    height: 100px;
+  }
+  
+  /* input {
+    width: 50%;
+    font-size: 110%;
+  } */
+  

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Sticky from './Sticky';
-import MyNav from './MyNav';
+import Sticky from '../components/Sticky';
 // import {fetchSticky} from '../actions/stickyActions'
 // import {connect} from 'react-redux'
 
@@ -30,11 +29,7 @@ export default class Stickies extends Component {
   // window.document.getElementById("stuff").innerText = this.state.value;
   }
  
-  handleNoteChange = (event) => {
-    this.setState({body: event.target.value});
 
-  // window.document.getElementById("stuff").innerText = this.state.value;
-  }
  
 
   handleSubmit = (event) => {
@@ -58,12 +53,12 @@ export default class Stickies extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <MyNav />
-        <h1>Welcome {this.props.user} to Sticky Notes</h1>
+     
+        <h1>Add Sticky</h1>
         <label>
-          Name: 
+          Text: 
           <input type="text" value={this.state.value} onChange={this.handleTittleChange} />
-          <input type="text" value={this.state.value} onChange={this.handleNoteChange} />
+        
         </label>
         <input type="submit" value="Submit" />
         <div className="mySticky">

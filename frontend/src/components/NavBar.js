@@ -17,6 +17,12 @@ const NavBar = () => {
       >
         Sticky Notes
       </NavLink>
+      <NavLink 
+        style={{ marginRight: '10px' }} 
+        to="/importantnotes"
+      >
+        Important Sticky Notes
+      </NavLink>
     </div>
   );
 }
