@@ -26,7 +26,7 @@ export default class Sticky extends Component {
     render() {
   return (
        <section className="Sticky" style={{background: this.state.color}} >
-          <h4>{this.props.tittle}</h4>
+          <h4>{this.props.body}</h4>
           <aside className="mountText">Posted</aside>
           <small onClick={ this.handleClose }>X</small>
        </section>
