@@ -1,4 +1,4 @@
-export default function stickiesReducer(state={stickies: []}, action){
+export default function stickiesReducer(state={stickies: [], loading: false}, action){
   const baseUrl = 'http://localhost:3000/api/v1/stickies';
   console.log("WE MADE IT INTO THE REDUCER, YAY! : ", action.type," : ", action.payload)
   
@@ -34,16 +34,19 @@ export default function stickiesReducer(state={stickies: []}, action){
             })
           );
           break;
+          case 'LOADING_STICKIES':
+            return {
+              ...state,
+              stickies: [...state.stickies],
+              loading: true
+            }
+            break;
         case 'GET_STICKIES':
-          fetch(baseUrl).then((response) => {
-            response.json().then((data) => {
-              console.log("GET_STICKIES!",data);
-             return data;
-            }).catch((err) => {
-              console.log(err);
-              return state
-            })
-          });
+          return {
+            ...state,
+            stickies: action.stickies,
+            loading: false
+          }
           
       default:
         return state

@@ -17,30 +17,9 @@ class Stickies extends Component {
   }
 
    componentDidMount() {
-     console.log("Loading Stickies",this.props.allStickies)
+    
     this.setState({output: this.props.allStickies});
-//     console.log("Loaded");
-//       fetch('http://localhost:3000/api/v1/stickies').then((response) => {
-//             response.json().then((data) => {
-//               console.log("GET_STICKIES",data);
-//               this.setState({output: data});
-//             }).catch((err) => {
-//               console.log(err);
-            
-//             })
-//           });
-//     // this.props.getStickies();
-//  }
-
-
-  
- 
-  // handleOnSubmit(event) {
-  //   event.preventDefault();
-  //   this.props.addRestaurant(this.state.text)
-  //   this.setState({
-  //     text: ''
-  //   });
+    console.log("Loading Stickies state",this.state)
    }
  
 
@@ -76,7 +55,8 @@ class Stickies extends Component {
         </label>
         <input type="submit" value="Submit" />
         <div className="mySticky">
-        {this.state.output.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id} time={sticky.time}  removeSticky={this.removeSticky}/>)}
+        {/* {this.state.output.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id} time={sticky.time}  removeSticky={this.removeSticky}/>)} */}
+        {this.props.allStickies.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id} time={sticky.time}  removeSticky={this.removeSticky}/>)}
         </div>
       </form>
     );
