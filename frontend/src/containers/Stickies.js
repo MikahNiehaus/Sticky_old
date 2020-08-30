@@ -10,9 +10,9 @@ class Stickies extends Component {
     super(props);
     //state is Dictinary 
     this.state = {
-      output: [],
+      // output: [],
         body: '',
-      id: 0
+      // id: 0
     };
    
    
@@ -34,9 +34,9 @@ class Stickies extends Component {
   
 
   removeSticky = id => {
-    this.setState(prevState => ({
-      output: prevState.output.filter(sticky => sticky.id !== id)
-    }))
+    // this.setState(prevState => ({
+    //   output: prevState.output.filter(sticky => sticky.id !== id)
+    // }))
     this.props.deleteSticky(id)
   }
 

@@ -8,8 +8,8 @@ const  stickiesReducer = (state={stickies: [], loading: false}, action) => {
         // return {stickies: action.payload}
         break;
         case 'DELETE_STICKY':
-          console.log("!!!DELETE!!!",state,action)
-        state.stickies.splice(action.stickies)
+          console.log("!!!DELETE!!!",state.stickies,action.stickies)
+        state.stickies = state.stickies.filter(item => item.id !== action.stickies)
         console.log("!!!splice!!!",state.stickies)
         return state
           break;
