@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Sticky from '../components/Sticky';
 import { connect } from 'react-redux'
+import { postSticky } from '../actions/postSticky'
+import { deleteSticky } from '../actions/deleteSticky'
 
 class Stickies extends Component {
   constructor(props) {
     super(props);
     //state is Dictinary 
-    this.endpoint = '/api/stickys';
     this.state = {
       output: [],
         body: '',
@@ -18,21 +19,18 @@ class Stickies extends Component {
 
    componentDidMount() {
     
-    this.setState({output: this.props.allStickies});
-    console.log("Loading Stickies state",this.state)
+    // this.setState({output: this.props.allStickies});
+    console.log("Loading sc")
    }
- 
+   handleBodyChange = (event)=>{
+    this.setState({body: event.target.value});
 
+  }
   handleSubmit = (event) => {
     event.preventDefault();
   
-    this.setState(prevState => ({
-      id: prevState.id + 1,
-      output: [...prevState.output,  { body: this.state.body, id: prevState.id + 1}],
-      body: ''
-    }));
-    this.props.addSticky(this.state.body)
-  
+    this.props.postSticky({body: this.state.body, important: false})
+
   }
   
 
@@ -56,27 +54,15 @@ class Stickies extends Component {
         <input type="submit" value="Submit" />
         <div className="mySticky">
         {/* {this.state.output.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id} time={sticky.time}  removeSticky={this.removeSticky}/>)} */}
-        {this.props.allStickies.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id} time={sticky.time}  removeSticky={this.removeSticky}/>)}
+        {this.props.getStickies.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id}  removeSticky={this.removeSticky}/>)}
+        {/* {console.log("!!!MAP!!!",this.props.getStickies)} */}
         </div>
       </form>
     );
   }
 
 }
-const mapStateToProps = (state) => {
-  console.log("mapping State To Props");
-  return {
-      output: state.stickyReducer
-  }
-}
 
-// const mapStateToProps = state => ({ stickies: state.stickies })
-//is used for dispatching actions to the store.
-//dispatch is a function of the Redux store
-const mapDispatchToProps = dispatch => ({
-  addSticky: payload => dispatch({type: 'ADD_STICKY', payload}),//action = {trype, paylaod }
-  deleteSticky: payload => dispatch({type: 'DELETE_STICKY', payload })
-})
+
 // connect can accept an argument called mapDispatchToProps, which lets you create functions that dispatch when called, and pass those functions as props to your component.
-export default connect(mapStateToProps, mapDispatchToProps)(Stickies)//google connect
-//mapStateToProps
+export default connect(null,{deleteSticky, postSticky})(Stickies)
