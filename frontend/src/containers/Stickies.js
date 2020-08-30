@@ -3,6 +3,7 @@ import Sticky from '../components/Sticky';
 import { connect } from 'react-redux'
 import { postSticky } from '../actions/postSticky'
 import { deleteSticky } from '../actions/deleteSticky'
+import { getStickies } from '../actions/getStickies'
 
 class Stickies extends Component {
   constructor(props) {
@@ -16,12 +17,10 @@ class Stickies extends Component {
    
    
   }
-
-   componentDidMount() {
-    
-    // this.setState({output: this.props.allStickies});
-    console.log("Loading sc")
-   }
+  componentDidMount() {
+    this.props.getStickies()
+  }
+  
    handleBodyChange = (event)=>{
     this.setState({body: event.target.value});
 
@@ -54,7 +53,7 @@ class Stickies extends Component {
         <input type="submit" value="Submit" />
         <div className="mySticky">
         {/* {this.state.output.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id} time={sticky.time}  removeSticky={this.removeSticky}/>)} */}
-        {this.props.getStickies.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id}  removeSticky={this.removeSticky}/>)}
+        {this.props.output.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id}  removeSticky={this.removeSticky}/>)}
         {/* {console.log("!!!MAP!!!",this.props.getStickies)} */}
         </div>
       </form>
@@ -62,7 +61,13 @@ class Stickies extends Component {
   }
 
 }
-
+const mapStateToProps = (state) => {
+  console.log("mapping State To Props",state.stickies);
+  return {
+      output: state.stickies,
+      loading: state.loading
+  }
+}
 
 // connect can accept an argument called mapDispatchToProps, which lets you create functions that dispatch when called, and pass those functions as props to your component.
-export default connect(null,{deleteSticky, postSticky})(Stickies)
+export default connect(mapStateToProps,{getStickies, deleteSticky, postSticky})(Stickies)
