@@ -4,7 +4,7 @@ class ImportantStickies extends Component {
 
     addSticky = (sticky) => {
         if (sticky.important){
-       return (<Sticky body={sticky.body} important={false} id={sticky.id}  removeSticky={this.removeSticky}/>)
+       return (<Sticky key={sticky.id} body={sticky.body} important={false} id={sticky.id}  removeSticky={this.removeSticky}/>)
         }
     }
 
@@ -12,7 +12,7 @@ class ImportantStickies extends Component {
     return (
         <div>
             <h1>Important Stickies</h1>
-        {this.props.output.map(sticky => this.addSticky(sticky) )}
+        {this.props.output.reverse().map(sticky => this.addSticky(sticky) )}
            
         </div>
     )}

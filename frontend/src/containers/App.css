@@ -1,9 +1,4 @@
-/* body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  } */
-  
+
   .Stickies {
     width: 100vw;
     height: 100vh;
@@ -84,23 +79,7 @@
     font-size: 120%;
   }
   
-  .Sticky aside {
-    position: absolute;
-    left: 0;
-    bottom: 0%;
-    width: 100%;
-    background-color: white;
-    text-align: center;
-  }
-  
-  .Sticky small {
-    position: absolute;
-    top: 3px;
-    right: 5px;
-    color: grey;
-    cursor: pointer;
-  }
-  
+
   .mountText {
     font-size: 200%;
     animation-name: animateMount;
@@ -112,11 +91,11 @@
     opacity: 0;
   }
   
-  @keyframes animateMount {
+  /* @keyframes animateMount {
       from {opacity: 1;}
       to {opacity: 0;}
   }
-  
+   */
   form {
     font-size: 150%;
     display: flex;
@@ -133,9 +112,4 @@
     width: 50%;
     height: 100px;
   }
-  
-  /* input {
-    width: 50%;
-    font-size: 110%;
-  } */
   

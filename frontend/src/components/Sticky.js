@@ -14,11 +14,11 @@ export default class Sticky extends Component {
     
     render() {
   return (
-       <section key={this.props.key} className="Sticky" style={{background: '#ffff66'}} >
+       <section  className="Sticky" style={{background: '#ffff66'}} >
           <label>{this.props.body}</label>
          {this.importantCheck()}
          <form onSubmit={this.handleClose }>
-          <button style={{opacity: '0.3', position: 'absolute', top: '0px', right: '0px', color: 'grey', cursor: 'pointer'}} type="submit">X</button>
+          <button style={{opacity: '0.3', position: 'absolute', top: '0px', right: '0px', color: 'grey', cursor: 'pointer'}} type="submit">x</button>
           </form>
        </section>
   
