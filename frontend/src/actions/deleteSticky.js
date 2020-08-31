@@ -4,11 +4,10 @@ export const deleteSticky = (id) => {
     return (dispatch) => {
       dispatch({ type: 'LOADING_SICKIES'})
       fetch(baseUrl + '/' + id.toString(), {
-        method: 'delete'
-      }).then((response) => {
+      method: 'delete'
+    }).then((response) => {
       response.json().then((data) => {
  
- console.log("data",data)
            dispatch({ type: 'DELETE_STICKY', stickies: id})
      
 

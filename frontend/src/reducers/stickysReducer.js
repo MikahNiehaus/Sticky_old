@@ -1,5 +1,5 @@
 const  stickiesReducer = (state={stickies: [], loading: false}, action) => {
-  // console.log("WE MADE IT INTO THE REDUCER, YAY! : ", action.type," : ", action.payload, state)
+   console.log("WE MADE IT INTO THE REDUCER, YAY! : ", action.type," : ", action.payload,"state", state)
     switch (action.type){
       case 'POST_STICKY':
        
@@ -8,9 +8,7 @@ const  stickiesReducer = (state={stickies: [], loading: false}, action) => {
         // return {stickies: action.payload}
         break;
         case 'DELETE_STICKY':
-          console.log("!!!DELETE!!!",state.stickies,action.stickies)
         state.stickies = state.stickies.filter(item => item.id !== action.stickies)
-        console.log("!!!splice!!!",state.stickies)
         return state
           break;
           case 'LOADING_STICKIES':
@@ -27,7 +25,11 @@ const  stickiesReducer = (state={stickies: [], loading: false}, action) => {
             stickies: action.stickies,
             loading: false
           }
-          
+          break;
+          case 'PATCH_STICKY':
+            state.stickies = state.stickies.filter(item => item.id !== action.stickies.id)
+            state.stickies.push(action.stickies)
+            return state
       default:
         return state
     }

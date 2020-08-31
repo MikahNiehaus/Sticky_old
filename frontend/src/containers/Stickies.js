@@ -12,6 +12,7 @@ class Stickies extends Component {
     this.state = {
       // output: [],
         body: '',
+        important: false
       // id: 0
     };
    
@@ -25,10 +26,23 @@ class Stickies extends Component {
     this.setState({body: event.target.value});
 
   }
+  handleClickChange = (event)=>{
+    let x = false;
+    if (this.state.important === false){
+      x = true;
+    } else{
+      x = false;
+    }
+    this.setState({important: x});
+
+  }
   handleSubmit = (event) => {
-    event.preventDefault();
+  //  event.preventDefault();
   
-    this.props.postSticky({body: this.state.body, important: false})
+    this.props.postSticky({body: this.state.body, important: this.state.important})
+    this.setState({
+      body: ''
+    });
 
   }
   
@@ -37,7 +51,11 @@ class Stickies extends Component {
     // this.setState(prevState => ({
     //   output: prevState.output.filter(sticky => sticky.id !== id)
     // }))
+    
+    console.log(this.props.output)
     this.props.deleteSticky(id)
+    this.props.output.push({body: "WORKS!!"})
+    console.log(this.props.output)
   }
 
   render() {
@@ -49,11 +67,14 @@ class Stickies extends Component {
           Text: 
           <input type="text" value={this.state.value} onChange={this.handleBodyChange} />
         
+          <input type="submit" value="Submit" />
         </label>
-        <input type="submit" value="Submit" />
+        <label>
+        <input type="checkbox" onClick={this.handleClickChange} name="color" value="red"/> important
+        </label>
         <div className="mySticky">
         {/* {this.state.output.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id} time={sticky.time}  removeSticky={this.removeSticky}/>)} */}
-        {this.props.output.map(sticky =>  <Sticky body={sticky.body} key={sticky.id} id={sticky.id}  removeSticky={this.removeSticky}/>)}
+        {this.props.output.map(sticky =>  <Sticky body={sticky.body} important={sticky.important} id={sticky.id}  removeSticky={this.removeSticky}/>)}
         {/* {console.log("!!!MAP!!!",this.props.getStickies)} */}
         </div>
       </form>

@@ -1,6 +1,7 @@
 const baseUrl = 'http://localhost:3000/api/v1/stickies';
 
 export const postSticky = (text) => {
+  console.log("text",text)
   return (dispatch) => {
 let myJson = (
  text
@@ -19,11 +20,6 @@ fetch(baseUrl, configObj)
     console.log(err);
   })
 });
-// fetch(this.baseUrl, configObj)
-// .then((response) => {
-//   response.json().catch((err) => {
-//     console.log(err);
-//   })
-// });
+
   }
 }

@@ -6,21 +6,18 @@ import NavBar from '../components/NavBar';
 import Stickies from './Stickies';
 import HomePage from './HomePage';
 import ImportantStickies from './ImportantStickies';
-
+import { getStickies } from '../actions/getStickies'
 
 import { connect } from 'react-redux'
 class App extends Component {
 
 componentDidMount() {
-  // this.props.getStickies()
+  this.props.getStickies()
 }
 handleLoading = () => {
-  console.log('this.props.loading',this.props.loading)
-  console.log('this.props.output',this.props.output)
   if(this.props.loading) {
     return <div>Loading...</div>
   } else {
-    console.log("this.props.getStickies",this.props.output)
     return (<Router>
       <div>
         <NavBar />
@@ -55,11 +52,16 @@ render() {
 //   deleteSticky: payload => dispatch({type: 'DELETE_STICKY', payload }),
 //   getStickies
 // })
-
+const mapStateToProps = (state) => {
+  return {
+      output: state.stickies,
+      loading: state.loading
+  }
+}
 //DO IT THE WAY ABOVE
 //BUT IF YOU MUST PASS IN AN OBJECT INSTEAD OF A FUNCTION,
 //PLEASE DO NOT DESTRUCTURE
 //GIVE THEM NEW KEYS SO THAT YOU REMEMBER THE DIFFERENCE
 //{ dispatchedAddBooks: addBooks }
 // routerProps
-export default (App)
+export default connect(mapStateToProps,{getStickies})(App)
