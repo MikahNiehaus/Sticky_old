@@ -4,11 +4,13 @@ const  stickiesReducer = (state={stickies: [], loading: false}, action) => {
       case 'POST_STICKY':
        
         state.stickies.push(action.stickies)
+         console.log('POST_STICKY',state.stickies)
         return state
         // return {stickies: action.payload}
         break;
         case 'DELETE_STICKY':
-        state.stickies = state.stickies.filter(item => item.id !== action.stickies)
+          console.log('DELETE_STICKY',state.stickies)
+      //  state.stickies = state.stickies.filter(item => item.id !== action.stickies)
         return state
           break;
           case 'LOADING_STICKIES':

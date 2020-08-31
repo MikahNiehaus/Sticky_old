@@ -1,4 +1,3 @@
-// import React from 'react';
 import './App.css';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
@@ -6,14 +5,17 @@ import NavBar from '../components/NavBar';
 import Stickies from './Stickies';
 import HomePage from './HomePage';
 import ImportantStickies from './ImportantStickies';
-import { getStickies } from '../actions/getStickies'
-
 import { connect } from 'react-redux'
+import { postSticky } from '../actions/postSticky'
+import { deleteSticky } from '../actions/deleteSticky'
+import { getStickies } from '../actions/getStickies'
 class App extends Component {
 
-componentDidMount() {
-  this.props.getStickies()
-}
+  componentDidMount() {
+    this.props.getStickies()
+  }
+  
+
 handleLoading = () => {
   if(this.props.loading) {
     return <div>Loading...</div>
@@ -22,8 +24,8 @@ handleLoading = () => {
       <div>
         <NavBar />
         <Route exact path="/" render={() => <HomePage></HomePage>} />
-        <Route path='/stickynotes' render={() => <Stickies ></Stickies>} />
-        <Route path='/importantnotes' render={() => <ImportantStickies></ImportantStickies>} />
+        <Route path='/stickynotes' render={() => <Stickies getStickies={this.props.getStickies} postSticky={this.props.postSticky} deleteSticky={this.props.deleteSticky} output={this.props.output} ></Stickies>} />
+        <Route path='/importantnotes' render={() => <ImportantStickies  output={this.props.output}></ImportantStickies>} />
       </div>
     </Router>);
   }
@@ -36,32 +38,12 @@ render() {
   );
 }
 }
- 
-
-
-
-// const mapDispatchToProps = state => {
-//   return {
-//     getStickies: state.stickies,
-//     loading: state.loading,
-//     postSticky: state.stickies
-//   }
-// }
-// const mapDispatchToProps = dispatch => ({
-//   postStickies: payload => dispatch({type: 'POST_STICKY', payload}),//action = {trype, paylaod }
-//   deleteSticky: payload => dispatch({type: 'DELETE_STICKY', payload }),
-//   getStickies
-// })
 const mapStateToProps = (state) => {
+  console.log("mapping State To Props",state.stickies);
   return {
       output: state.stickies,
       loading: state.loading
   }
 }
-//DO IT THE WAY ABOVE
-//BUT IF YOU MUST PASS IN AN OBJECT INSTEAD OF A FUNCTION,
-//PLEASE DO NOT DESTRUCTURE
-//GIVE THEM NEW KEYS SO THAT YOU REMEMBER THE DIFFERENCE
-//{ dispatchedAddBooks: addBooks }
-// routerProps
-export default connect(mapStateToProps,{getStickies})(App)
+
+export default connect(mapStateToProps,{getStickies, deleteSticky, postSticky})(App)

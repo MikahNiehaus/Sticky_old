@@ -1,8 +1,5 @@
-// import React from 'react';
-import { connect } from 'react-redux'
 import Sticky from '../components/Sticky';
 import React, { Component } from 'react'
-import { getStickies } from '../actions/getStickies'
 class ImportantStickies extends Component {
 
     addSticky = (sticky) => {
@@ -22,10 +19,5 @@ class ImportantStickies extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-        output: state.stickies,
-        loading: state.loading
-    }
-  }
-export default connect(mapStateToProps, {getStickies})(ImportantStickies)
+
+export default (ImportantStickies)

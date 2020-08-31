@@ -2,8 +2,9 @@ import React, { Component } from 'react'//getting react
 
 export default class Sticky extends Component {
    
-      handleClose = () => {
-        this.props.removeSticky(this.props.id)
+      handleClose = (event) => {
+      //  event.preventDefault();
+        this.props.deleteSticky(this.props.id)
       }
       importantCheck (){
         if (this.props.important){
@@ -13,10 +14,12 @@ export default class Sticky extends Component {
     
     render() {
   return (
-       <section className="Sticky" style={{background: '#ffff66'}} >
-          <h4>{this.props.body}</h4>
+       <section key={this.props.key} className="Sticky" style={{background: '#ffff66'}} >
+          <label>{this.props.body}</label>
          {this.importantCheck()}
-          <small onClick={ this.handleClose }>X</small>
+         <form onSubmit={this.handleClose }>
+          <button style={{opacity: '0.3', position: 'absolute', top: '0px', right: '0px', color: 'grey', cursor: 'pointer'}} type="submit">X</button>
+          </form>
        </section>
   
   );
