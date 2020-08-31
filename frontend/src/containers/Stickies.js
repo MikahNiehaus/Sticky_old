@@ -72,3 +72,4 @@ class Stickies extends Component {
 
 // connect can accept an argument called mapDispatchToProps, which lets you create functions that dispatch when called, and pass those functions as props to your component.
 export default (Stickies)
+//<createSticky value={this.state.value} handleClickChange={this.handleClickChange} handleSubmit={this.handleSubmit} handleBodyChange={this.handleBodyChange}></createSticky>
