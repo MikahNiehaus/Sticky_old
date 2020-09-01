@@ -2,35 +2,37 @@
  export const cuidFn = cuid;
 
 export default function stickiesReducer(state = {stickies: []}, action) {
-
-   console.log("!!!REDUCER!!! state:" , state,"action:", action)
+const yo = {
+  ...state,
+  stickies: [ ...state.stickies, action.sticky]
+};
+   console.log("!!!REDUCER!!! state:" ,{stickies: action.stickies} ,"action:", {stickies: action.stickies})
     switch (action.type){
       case 'POST_STICKY':
-       const sticky = { body: action.stickies.body, important: action.stickies.important, id: action.stickies.id };
-       return state
-        // return {
-        //   ...state,
-        //   stickies: [ ...state.stickies, sticky]
-        // }
-        // return [...state.stickies, action.stickies]
+         return {
+          ...state,
+          stickies: [ ...state.stickies, action.sticky]
+        };
+       
         break;
 
         case 'DELETE_STICKY':
-        return state;
+          return {stickies: action.stickies}
           break;
 
 
         case 'GET_STICKIES':
-          return {
-            ...state,
-            stickies: action.stickies,
-          };
+          return {stickies: action.stickies}
+          // return {
+          //   ...state,
+          //   stickies: action.stickies,
+          // };
           break;
 
-          case 'PATCH_STICKY':
-            state.stickies = state.stickies.filter(item => item.id !== action.stickies.id);
-            state.stickies.push(action.stickies);
-            return state;
+          // case 'PATCH_STICKY':
+          //   state.stickies = state.stickies.filter(item => item.id !== action.stickies.id);
+          //   state.stickies.push(action.stickies);
+          //   return state;
       default:
         return state;
     }

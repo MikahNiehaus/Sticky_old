@@ -8,7 +8,7 @@ export const deleteSticky = (id) => {
     }).then((response) => {
       response.json().then((data) => {
  
-         //  dispatch({ type: 'DELETE_STICKY', stickies: id})
+        dispatch({ type: 'DELETE_STICKY', stickies: data})
      
 
       }).catch((err) => {

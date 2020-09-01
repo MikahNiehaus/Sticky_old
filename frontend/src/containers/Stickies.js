@@ -2,15 +2,13 @@ import React, { Component } from 'react'
 import Sticky from '../components/Sticky';
 
 
-class Stickies extends Component {
+export default class Stickies extends Component {
   constructor(props) {
     super(props);
     //state is Dictinary 
     this.state = {
-      // output: [],
         body: '',
         important: false
-      // id: 0
     };
    
    
@@ -18,7 +16,10 @@ class Stickies extends Component {
   
   
    handleBodyChange = (event)=>{
-    this.setState({body: event.target.value});
+    this.setState({
+      body: event.target.value,
+      important: false
+    });
    
   }
   handleClickChange = (event)=>{
@@ -42,7 +43,16 @@ class Stickies extends Component {
     });
 
   }
-  
+  //not my code
+  handleOnSubmit(event) {
+    event.preventDefault();
+    this.props.addRestaurant(this.state.text)
+    this.setState({
+      text: ''
+    });
+  }
+
+
 
 
   render() {
@@ -53,7 +63,7 @@ class Stickies extends Component {
         <h1>Add Sticky</h1>
         <label>
           Text: 
-          <input type="text" value={this.state.value} onChange={this.handleBodyChange} />
+          <input type="text" value={this.state.body} onChange={this.handleBodyChange} />
         
           <input type="submit" value="Submit" />
         </label>
@@ -62,7 +72,8 @@ class Stickies extends Component {
         </label>
       </form>
       
-        {this.list}
+        {/* {this.list} */}
+        {this.props.output.reverse().map(sticky =>  <Sticky body={sticky.body} key={sticky.id} important={sticky.important} id={sticky.id}  deleteSticky={this.props.deleteSticky}/>)}
    
       </div>
     );
@@ -70,7 +81,8 @@ class Stickies extends Component {
 
   
 list = () => {
-  if(this.props.output){
+  console.log("hiu",this.props.output.length !== 0)
+  if(this.props.output.length !== 0){
     return this.props.output.reverse().map(sticky =>  <Sticky body={sticky.body} key={sticky.id} important={sticky.important} id={sticky.id}  deleteSticky={this.props.deleteSticky}/>)
   }
   }
@@ -81,5 +93,5 @@ list = () => {
 
 
 // connect can accept an argument called mapDispatchToProps, which lets you create functions that dispatch when called, and pass those functions as props to your component.
-export default (Stickies)
+//export default (Stickies)
 //<createSticky value={this.state.value} handleClickChange={this.handleClickChange} handleSubmit={this.handleSubmit} handleBodyChange={this.handleBodyChange}></createSticky>

@@ -11,12 +11,12 @@ let configObj = {
   body: JSON.stringify(myJson)
 }
 fetch(baseUrl, configObj)
-.then((response) => {
-  response.json().then((sticky) => {
-   // dispatch({ type: 'POST_STICKY', stickies: data })
-  console.log("!!!POST_STICKY!!", {stickies: sticky});
+.then((response) => { 
+   response.json().then((data) => {
+    console.log("!!!POST_STICKY!!", {sticky: data});
+    dispatch({ type: 'POST_STICKY', sticky: data })
 
-   dispatch({type: 'POST_STICKY', stickies: sticky})
+
   }).catch((err) => {
     console.log(err);
   })

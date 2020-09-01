@@ -28,16 +28,9 @@ render() {
 }
 }
 const mapStateToProps = (state) => {
-  console.log("mapping State To Props",state.stickies);
   return {
       output: state.stickies
   }
 }
-// const mapDispatchToProps = dispatch => ({
-//   getStickies: stickies => dispatch({type: 'GET_STICKIES', stickies}),//action = {trype, paylaod }
-//   deleteSticky: id => dispatch({type: 'DELETE_STICKY', id}),
-//   postSticky: sticky => dispatch({type: 'GET_STICKIES', sticky})
-// })
-//  const mapDispatchToProps = {getStickies, postSticky,deleteSticky};
 
 export default connect(mapStateToProps,{getStickies, postSticky,deleteSticky})(App)
