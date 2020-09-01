@@ -16,12 +16,13 @@ First enter a subject name and click add subject.To add the closed captions copy
 
 ### Installing
 
-# frontend
-install redux-thunk
+# frontend run
+npm install redux-thunk
 npm install
-# backend
+npm install cuid
+# backend run
 bundle install 
-
+rake db:migrate
 ## Deployment
 
 To start do this

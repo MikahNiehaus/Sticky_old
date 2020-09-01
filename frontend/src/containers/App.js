@@ -16,34 +16,28 @@ class App extends Component {
   }
   
 
-handleLoading = () => {
-  if(this.props.loading) {
-    return <div>Loading...</div>
-  } else {
-    return (<Router>
-      <div>
-        <NavBar />
-        <Route exact path="/" render={() => <HomePage></HomePage>} />
-        <Route path='/stickynotes' render={() => <Stickies getStickies={this.props.getStickies} postSticky={this.props.postSticky} deleteSticky={this.props.deleteSticky} output={this.props.output} ></Stickies>} />
-        <Route path='/importantnotes' render={() => <ImportantStickies  output={this.props.output}></ImportantStickies>} />
-      </div>
-    </Router>);
-  }
-}
 render() {
-  return (
-    <div className="App">
-      {this.handleLoading()}
+  return (<Router>
+    <div>
+      <NavBar />
+      <Route exact path="/" render={() => <HomePage></HomePage>} />
+      <Route path='/stickynotes' render={() => <Stickies getStickies={this.props.getStickies} postSticky={this.props.postSticky} deleteSticky={this.props.deleteSticky} output={this.props.output} ></Stickies>} />
+      <Route path='/importantnotes' render={() => <ImportantStickies  output={this.props.output}></ImportantStickies>} />
     </div>
-  );
+  </Router>);
 }
 }
 const mapStateToProps = (state) => {
   console.log("mapping State To Props",state.stickies);
   return {
-      output: state.stickies,
-      loading: state.loading
+      output: state.stickies
   }
 }
+// const mapDispatchToProps = dispatch => ({
+//   getStickies: stickies => dispatch({type: 'GET_STICKIES', stickies}),//action = {trype, paylaod }
+//   deleteSticky: id => dispatch({type: 'DELETE_STICKY', id}),
+//   postSticky: sticky => dispatch({type: 'GET_STICKIES', sticky})
+// })
+//  const mapDispatchToProps = {getStickies, postSticky,deleteSticky};
 
-export default connect(mapStateToProps,{getStickies, deleteSticky, postSticky})(App)
+export default connect(mapStateToProps,{getStickies, postSticky,deleteSticky})(App)

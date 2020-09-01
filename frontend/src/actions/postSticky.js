@@ -1,7 +1,6 @@
 const baseUrl = 'http://localhost:3000/api/v1/stickies';
 
 export const postSticky = (text) => {
-  console.log("text",text)
   return (dispatch) => {
 let myJson = (
  text
@@ -11,11 +10,13 @@ let configObj = {
   headers: { "Content-Type": "application/json", "Accepts": "application/json" },
   body: JSON.stringify(myJson)
 }
- dispatch({ type: 'LOADING_SICKIES'})
 fetch(baseUrl, configObj)
 .then((response) => {
-  response.json().then((data) => {
-    dispatch({ type: 'POST_STICKY', stickies: data })
+  response.json().then((sticky) => {
+   // dispatch({ type: 'POST_STICKY', stickies: data })
+  console.log("!!!POST_STICKY!!", {stickies: sticky});
+
+   dispatch({type: 'POST_STICKY', stickies: sticky})
   }).catch((err) => {
     console.log(err);
   })

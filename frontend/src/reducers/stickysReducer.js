@@ -1,28 +1,29 @@
-const  stickiesReducer = (state={stickies: [], loading: false}, action) => {
-   console.log("WE MADE IT INTO THE REDUCER, YAY! : ", action.type," : ", action.payload,"state", state)
+ import cuid from 'cuid';
+ export const cuidFn = cuid;
+
+export default function stickiesReducer(state = {stickies: []}, action) {
+
+   console.log("!!!REDUCER!!! state:" , state,"action:", action)
     switch (action.type){
       case 'POST_STICKY':
-        state.stickies.push(action.stickies)
-        return state;
+       const sticky = { body: action.stickies.body, important: action.stickies.important, id: action.stickies.id };
+       return state
+        // return {
+        //   ...state,
+        //   stickies: [ ...state.stickies, sticky]
+        // }
+        // return [...state.stickies, action.stickies]
         break;
 
         case 'DELETE_STICKY':
         return state;
           break;
 
-          case 'LOADING_STICKIES':
-            return {
-              ...state,
-              stickies: [...state.stickies],
-              loading: true
-            };
-            break;
 
         case 'GET_STICKIES':
           return {
             ...state,
             stickies: action.stickies,
-            loading: false
           };
           break;
 
@@ -34,4 +35,4 @@ const  stickiesReducer = (state={stickies: [], loading: false}, action) => {
         return state;
     }
   }
-  export default stickiesReducer;
+  // export default stickiesReducer;

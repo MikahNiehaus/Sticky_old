@@ -3,7 +3,7 @@ import React, { Component } from 'react'//getting react
 export default class Sticky extends Component {
    
       handleClose = (event) => {
-      //  event.preventDefault();
+        event.preventDefault();
         this.props.deleteSticky(this.props.id)
       }
       importantCheck (){

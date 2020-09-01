@@ -19,7 +19,7 @@ class Stickies extends Component {
   
    handleBodyChange = (event)=>{
     this.setState({body: event.target.value});
-
+   
   }
   handleClickChange = (event)=>{
     let x = false;
@@ -32,16 +32,17 @@ class Stickies extends Component {
 
   }
   handleSubmit = (event) => {
- // event.preventDefault();
+  event.preventDefault();
   console.log('handleSubmit POST_STICKY',{body: this.state.body, important: this.state.important} )
-    this.props.postSticky({body: this.state.body, important: this.state.important})
+  //fix this
+  const value = {body: this.state.body, important: this.state.important};
+    this.props.postSticky(value)
     this.setState({
       body: ''
     });
 
   }
   
-
 
 
   render() {
@@ -61,13 +62,22 @@ class Stickies extends Component {
         </label>
       </form>
       
-        {this.props.output.reverse().map(sticky =>  <Sticky body={sticky.body} key={sticky.id} important={sticky.important} id={sticky.id}  deleteSticky={this.props.deleteSticky}/>)}
+        {this.list}
    
       </div>
     );
   }
 
+  
+list = () => {
+  if(this.props.output){
+    return this.props.output.reverse().map(sticky =>  <Sticky body={sticky.body} key={sticky.id} important={sticky.important} id={sticky.id}  deleteSticky={this.props.deleteSticky}/>)
+  }
+  }
+
 }
+
+
 
 
 // connect can accept an argument called mapDispatchToProps, which lets you create functions that dispatch when called, and pass those functions as props to your component.
