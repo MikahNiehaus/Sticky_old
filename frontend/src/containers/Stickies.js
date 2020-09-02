@@ -22,7 +22,7 @@ export default class Stickies extends Component {
     });
    
   }
-  
+
   handleCheckChange = (event)=>{
     event.preventDefault();
     if (this.state.important === false){
@@ -34,7 +34,6 @@ export default class Stickies extends Component {
 
   handleSubmit = (event) => {
   event.preventDefault();
-  //fix this
   const value = {body: this.state.body, important: this.state.important};
     this.props.postSticky(value)
     this.setState({
@@ -44,14 +43,7 @@ export default class Stickies extends Component {
     });
 
   }
-  //not my code
-  handleOnSubmit(event) {
-    event.preventDefault();
-    this.props.addRestaurant(this.state.text)
-    this.setState({
-      text: ''
-    });
-  }
+  
 
 
 

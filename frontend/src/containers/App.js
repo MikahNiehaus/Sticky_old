@@ -21,7 +21,7 @@ render() {
     <div>
       <NavBar />
       <Route exact path="/" render={() => <HomePage></HomePage>} />
-      <Route path='/stickynotes' render={() => <Stickies getStickies={this.props.getStickies} postSticky={this.props.postSticky} deleteSticky={this.props.deleteSticky} output={this.props.output} ></Stickies>} />
+      <Route path='/stickynotes' render={() => <Stickies postSticky={this.props.postSticky} deleteSticky={this.props.deleteSticky} output={this.props.output} ></Stickies>} />
       <Route path='/importantnotes' render={() => <ImportantStickies  getStickies={this.props.getStickies}  deleteSticky={this.props.deleteSticky} output={this.props.output}></ImportantStickies>} />
     </div>
   </Router>);
