@@ -13,7 +13,6 @@ let configObj = {
 fetch(baseUrl, configObj)
 .then((response) => { 
    response.json().then((data) => {
-    console.log("!!!POST_STICKY!!", {sticky: data});
     dispatch({ type: 'POST_STICKY', sticky: data })
 
 

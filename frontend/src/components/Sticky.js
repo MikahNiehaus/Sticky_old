@@ -18,7 +18,7 @@ export default class Sticky extends Component {
           <label>{this.props.body}</label>
          {this.importantCheck()}
          <form onSubmit={this.handleClose }>
-          <button style={{opacity: '0.3', position: 'absolute', top: '0px', right: '0px', color: 'grey', cursor: 'pointer'}} type="submit">x</button>
+          <button style={{opacity: '0.5', position: 'absolute', top: '0px', right: '0px', color: 'grey', cursor: 'pointer'}} type="submit">x</button>
           </form>
        </section>
   

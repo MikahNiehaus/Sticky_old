@@ -29,12 +29,10 @@ export default class Stickies extends Component {
     } else if (this.state.important == true){
         this.setState({important: false, background: 'lightblue'});
       } 
-      console.log('handleCheckChange',{body: this.state.body, important: this.state.important} )
   }
 
   handleSubmit = (event) => {
   event.preventDefault();
-  console.log('handleSubmit POST_STICKY',{body: this.state.body, background: this.state.background, important: this.state.important} )
   //fix this
   const value = {body: this.state.body, important: this.state.important};
     this.props.postSticky(value)
@@ -76,10 +74,9 @@ export default class Stickies extends Component {
       <input type="submit" style={{background: this.state.background}} value="important"/>
      
       </form>
-
-        {/* {this.list} */}
+     
         {this.props.output.reverse().map(sticky =>  <Sticky body={sticky.body} key={sticky.id} important={sticky.important} id={sticky.id}  deleteSticky={this.props.deleteSticky}/>)}
-   
+  
       </div>
     );
   }

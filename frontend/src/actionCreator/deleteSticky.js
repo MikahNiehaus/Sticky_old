@@ -1,7 +1,6 @@
 const baseUrl = 'http://localhost:3000/api/v1/stickies';
 
 export const deleteSticky = (id) => {
-  console.log("!!!!!ID!!!",id)
     return (dispatch) => {
       fetch(baseUrl + '/' + id.toString(), {
       method: 'delete'
