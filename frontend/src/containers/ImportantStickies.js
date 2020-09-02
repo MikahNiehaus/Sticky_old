@@ -4,7 +4,7 @@ class ImportantStickies extends Component {
 
     addSticky = (sticky) => {
         if (sticky.important){
-       return (<Sticky key={sticky.id} body={sticky.body} important={false} id={sticky.id}  removeSticky={this.removeSticky}/>)
+       return ( <Sticky body={sticky.body} key={sticky.id}  id={sticky.id}  deleteSticky={this.props.deleteSticky}/>)
         }
     }
 

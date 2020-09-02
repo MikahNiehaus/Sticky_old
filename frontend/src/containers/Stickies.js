@@ -8,7 +8,8 @@ export default class Stickies extends Component {
     //state is Dictinary 
     this.state = {
         body: '',
-        important: false
+        important: false,
+        background: 'lightblue'
     };
    
    
@@ -17,29 +18,30 @@ export default class Stickies extends Component {
   
    handleBodyChange = (event)=>{
     this.setState({
-      body: event.target.value,
-      important: false
+      body: event.target.value
     });
    
   }
-  handleClickChange = (event)=>{
-    let x = false;
-    if (this.state.important === false){
-      x = true;
-    } else{
-      x = false;
-    }
-    this.setState({important: x});
-
+  handleCheckChange = (event)=>{
+    event.preventDefault();
+    if (this.state.important == false){
+      this.setState({important: true, background: 'red'});
+    } else if (this.state.important == true){
+        this.setState({important: false, background: 'lightblue'});
+      } 
+      console.log('handleCheckChange',{body: this.state.body, important: this.state.important} )
   }
+
   handleSubmit = (event) => {
   event.preventDefault();
-  console.log('handleSubmit POST_STICKY',{body: this.state.body, important: this.state.important} )
+  console.log('handleSubmit POST_STICKY',{body: this.state.body, background: this.state.background, important: this.state.important} )
   //fix this
   const value = {body: this.state.body, important: this.state.important};
     this.props.postSticky(value)
     this.setState({
-      body: ''
+      body: '',
+      important: false,
+      background: 'lightblue'
     });
 
   }
@@ -67,11 +69,14 @@ export default class Stickies extends Component {
         
           <input type="submit" value="Submit" />
         </label>
-        <label>
-        <input type="checkbox" onClick={this.handleClickChange} name="color" value="red"/> important
-        </label>
-      </form>
       
+      </form>
+      <form onSubmit={this.handleCheckChange}>
+
+      <input type="submit" style={{background: this.state.background}} value="important"/>
+     
+      </form>
+
         {/* {this.list} */}
         {this.props.output.reverse().map(sticky =>  <Sticky body={sticky.body} key={sticky.id} important={sticky.important} id={sticky.id}  deleteSticky={this.props.deleteSticky}/>)}
    
@@ -80,18 +85,7 @@ export default class Stickies extends Component {
   }
 
   
-list = () => {
-  console.log("hiu",this.props.output.length !== 0)
-  if(this.props.output.length !== 0){
-    return this.props.output.reverse().map(sticky =>  <Sticky body={sticky.body} key={sticky.id} important={sticky.important} id={sticky.id}  deleteSticky={this.props.deleteSticky}/>)
-  }
-  }
+
 
 }
 
-
-
-
-// connect can accept an argument called mapDispatchToProps, which lets you create functions that dispatch when called, and pass those functions as props to your component.
-//export default (Stickies)
-//<createSticky value={this.state.value} handleClickChange={this.handleClickChange} handleSubmit={this.handleSubmit} handleBodyChange={this.handleBodyChange}></createSticky>

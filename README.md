@@ -19,7 +19,6 @@ First enter a subject name and click add subject.To add the closed captions copy
 # frontend run
 npm install redux-thunk
 npm install
-npm install cuid
 # backend run
 bundle install 
 rake db:migrate

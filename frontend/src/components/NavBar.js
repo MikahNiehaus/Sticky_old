@@ -4,21 +4,21 @@ import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
+    <div style={{ borderBottom: 'white', color: 'DarkOrchid', paddingBottom: '10px', marginBottom: '12px' }}>
       <NavLink 
-        style={{ marginRight: '10px' }} 
+        style={{ marginRight: '10px' ,color: 'DarkOrchid'}} 
         to="/"
-      >
+      >  
         Home
       </NavLink>
       <NavLink 
-        style={{ marginRight: '10px' }} 
+        style={{ marginRight: '10px',color: 'DarkOrchid' }} 
         to="/stickynotes"
       >
         Sticky Notes
       </NavLink>
       <NavLink 
-        style={{ marginRight: '10px' }} 
+        style={{ marginRight: '10px',color: 'DarkOrchid' }} 
         to="/importantnotes"
       >
         Important Sticky Notes

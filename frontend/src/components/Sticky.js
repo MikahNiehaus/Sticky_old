@@ -14,7 +14,7 @@ export default class Sticky extends Component {
     
     render() {
   return (
-       <section  className="Sticky" style={{background: '#ffff66'}} >
+       <section  className="Sticky" style={{background: 'rgb(96, 0, 151)'}} >
           <label>{this.props.body}</label>
          {this.importantCheck()}
          <form onSubmit={this.handleClose }>

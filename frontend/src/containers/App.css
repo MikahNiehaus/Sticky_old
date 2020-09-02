@@ -6,34 +6,43 @@
     padding: 5px;
   }
   body {
-  background-color: #ffe5c4;
+  background-color: rgb(30, 30, 30);
+}
+label{
+  color: rgba(255, 255, 255, 0.705);
+
+}
+.NavLink{
+  color: rgba(255, 255, 255, 0.705);
 }
   h4{
     
+    color: rgba(255, 255, 255, 0.705);
    
     text-align: center;
     padding: 10px;
   }
   h1{
+    color: rgba(255, 255, 255, 0.705);
     text-align: center;
   }
   
   h2{
     text-align: center;
+    color: rgba(255, 255, 255, 0.705);
     
   }
   h3{
     text-align: center;
+    color: rgba(255, 255, 255, 0.705);
+
   }
 
   button {
     font-size: 200%;
   }
   
-  .SpacePeople {
-    height: 100px;
-  }
-  
+ 
   .StickyGrid {
     display: flex;
     flex-direction: row;
@@ -50,10 +59,11 @@
     min-width: 200px;
     width: 240px;
     height: 150px;
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.705);
     font-size: 15px;
     box-shadow: 4px 6px rgba(200,200,200,0.8);
     text-transform: capitalize;
+    text-align: center;
     
     float: left;
    
