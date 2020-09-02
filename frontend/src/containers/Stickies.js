@@ -22,11 +22,12 @@ export default class Stickies extends Component {
     });
    
   }
+  
   handleCheckChange = (event)=>{
     event.preventDefault();
-    if (this.state.important == false){
+    if (this.state.important === false){
       this.setState({important: true, background: 'red'});
-    } else if (this.state.important == true){
+    } else if (this.state.important === true){
         this.setState({important: false, background: 'lightblue'});
       } 
   }

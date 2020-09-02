@@ -8,11 +8,8 @@ export default function stickiesReducer(state = {stickies: []}, action) {
           stickies: [ ...state.stickies, action.sticky]
         };
        
-        break;
-
         case 'DELETE_STICKY':
           return {stickies: action.stickies}
-          break;
 
         case 'GET_STICKIES':
           return {stickies: action.stickies}
