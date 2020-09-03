@@ -6,35 +6,38 @@
     padding: 5px;
   }
   body {
-  background-color: rgb(30, 30, 30);
+  background-color: rgb(24, 24, 24);
 }
 label{
-  color: rgba(255, 255, 255, 0.705);
+  color: rgb(226, 226, 226);
 
 }
 .NavLink{
-  color: rgba(255, 255, 255, 0.705);
+  color: rgb(226, 226, 226);
+}
+input{
+  background-color: rgb(226, 226, 226)
 }
   h4{
     
-    color: rgba(255, 255, 255, 0.705);
+    color: rgb(226, 226, 226);
    
     text-align: center;
     padding: 10px;
   }
   h1{
-    color: rgba(255, 255, 255, 0.705);
+    color: rgb(226, 226, 226);
     text-align: center;
   }
   
   h2{
     text-align: center;
-    color: rgba(255, 255, 255, 0.705);
+    color: rgb(226, 226, 226);
     
   }
   h3{
     text-align: center;
-    color: rgba(255, 255, 255, 0.705);
+    color: rgb(226, 226, 226);
 
   }
 
@@ -47,7 +50,7 @@ label{
     min-width: 200px;
     width: 240px;
     height: 150px;
-    border: 1px solid rgba(255, 255, 255, 0.705);
+    border: 1px solid rgb(226, 226, 226);
     font-size: 15px;
     box-shadow: 4px 6px rgba(200,200,200,0.8);
     text-transform: capitalize;
