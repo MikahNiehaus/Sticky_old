@@ -1,81 +1,21 @@
 import React, { Component } from 'react'
-import Sticky from '../components/Sticky';
-
+import StickyInput from '../components/StickyInput';
+import StickyList from '../components/StickyList';
 
 export default class Stickies extends Component {
   constructor(props) {
     super(props);
-    //state is Dictinary 
-    this.state = {
-        body: '',
-        important: false,
-        background: 'lightblue'
     };
-   
-   
-  }
-  
-  
-   handleBodyChange = (event)=>{
-    this.setState({
-      body: event.target.value
-    });
-   
-  }
-
-  handleCheckChange = (event)=>{
-    event.preventDefault();
-    if (this.state.important === false){
-      this.setState({important: true, background: 'red'});
-    } else if (this.state.important === true){
-        this.setState({important: false, background: 'lightblue'});
-      } 
-  }
-
-  handleSubmit = (event) => {
-  event.preventDefault();
-  const value = {body: this.state.body, important: this.state.important};
-    this.props.postSticky(value)
-    this.setState({
-      body: '',
-      important: false,
-      background: 'lightblue'
-    });
-
-  }
-  
-
-
-
 
   render() {
     return (
        <div className="mySticky">
-      <form onSubmit={this.handleSubmit}>
-     
-        <h1>Add Sticky</h1>
-        <label>
-          Text: 
-          <input type="text" value={this.state.body} onChange={this.handleBodyChange} />
-        
-          <input type="submit" value="Submit" />
-        </label>
-      
-      </form>
-      <form onSubmit={this.handleCheckChange}>
-
-      <input type="submit" style={{background: this.state.background}} value="important"/>
-     
-      </form>
-     
-        {this.props.output.reverse().map(sticky =>  <Sticky body={sticky.body} key={sticky.id} important={sticky.important} id={sticky.id}  deleteSticky={this.props.deleteSticky}/>)}
-  
-      </div>
+         <h1>Add Sticky</h1>
+        <StickyInput postSticky={this.props.postSticky} handleSubmit={this.handleSubmit}></StickyInput>
+        <StickyList output={this.props.output} deleteSticky={this.props.deleteSticky}></StickyList>
+       </div>
     );
   }
-
-  
-
 
 }
 
